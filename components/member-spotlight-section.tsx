@@ -13,7 +13,7 @@ const members = [
     image: '/neha.jpg',
     achievement: 'Led the redesign of a major e-commerce platform',
     skills: ['React', 'TypeScript', 'Tailwind CSS'],
-    linkedin: 'https://linkedin.com/in/nehajangid',
+    linkedin: 'https://www.linkedin.com/in/neha-jangid-79a9b0327/',
     twitter: 'https://twitter.com/nehajangid',
   },
   {
@@ -22,7 +22,7 @@ const members = [
     image: '/ranjan.png',
     achievement: 'Improved user engagement by 40% through UX optimization',
     skills: ['Figma', 'User Research', 'Prototyping'],
-    linkedin: 'https://linkedin.com/in/ranjankushwaha',
+    linkedin: 'https://www.linkedin.com/in/ranjan-kumar-b65062323/',
     twitter: 'https://twitter.com/ranjankushwaha',
   },
   {
@@ -31,7 +31,7 @@ const members = [
     image: '/nivesh.png',
     achievement: 'Built a platform helping professionals focus on work',
     skills: ['React.js', 'Next.js', 'AWS'],
-    linkedin: 'https://linkedin.com/in/niveshjain',
+    linkedin: 'https://www.linkedin.com/in/nivesh-jain-523104248/',
     twitter: 'https://twitter.com/niveshjain',
   },
   {
@@ -40,7 +40,7 @@ const members = [
     image: '/astitva.png',
     achievement: 'Published apps with 100K+ downloads',
     skills: ['React Native', 'Swift', 'Kotlin'],
-    linkedin: 'https://linkedin.com/in/astitvamishra',
+    linkedin: 'https://www.linkedin.com/in/astitva-mishra-/',
     twitter: 'https://twitter.com/astitvamishra',
   },
 ];
