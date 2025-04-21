@@ -42,9 +42,10 @@ export default function HeroSection() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:opacity-90 transition-opacity"
+              onClick={() => window.open("https://chat.whatsapp.com/C8mxw1OQ8sg1nnCv8RpqiL", "_blank")}
             >
               <MessageSquare className="mr-2 h-5 w-5" />
-              Join on WhatsApp
+              Join on WhatsApp Community
             </Button>
           </motion.div>
         </motion.div>
