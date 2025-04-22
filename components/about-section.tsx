@@ -7,20 +7,21 @@ import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const adminProfiles = [
   {
-    name: 'Nitin Sharma',
-    role: 'Community Lead',
-    description: 'Full-stack developer with 8+ years of experience in scaling tech communities.',
-    image: '/Nitin1.jpg',
-    linkedin: 'https://www.linkedin.com/in/nitin-sharma-a1a1a62ab/',
-    twitter: 'https://x.com/NitinSh60345544',
-  },
-  {
     name: 'Parth Gupta',
     role: 'Community Lead',
     description: 'Senior software architect specializing in cloud infrastructure and DevOps.',
     image: '/prince.png',
     linkedin: 'https://www.linkedin.com/in/parth-gupta-041279323/',
     twitter: 'https://x.com/parthgupta027',
+
+  },
+  {
+    name: 'Nitin Sharma',
+    role: 'Community Lead',
+    description: 'Full-stack developer with 8+ years of experience in scaling tech communities.',
+    image: '/Nitin1.jpg',
+    linkedin: 'https://www.linkedin.com/in/nitin-sharma-a1a1a62ab/',
+    twitter: 'https://x.com/NitinSh60345544',
   },
   {
     name: 'Prakash Madhok',
