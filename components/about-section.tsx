@@ -9,7 +9,7 @@ const adminProfiles = [
   {
     name: 'Parth Gupta',
     role: 'Community Lead',
-    description: 'Senior software architect specializing in cloud infrastructure and DevOps.',
+    description: '',
     image: '/prince.png',
     linkedin: 'https://www.linkedin.com/in/parth-gupta-041279323/',
     twitter: 'https://x.com/parthgupta027',
