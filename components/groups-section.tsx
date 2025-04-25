@@ -1,7 +1,7 @@
-'use client';
+ 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
 import {
   Linkedin,
   PaintRoller,
@@ -26,7 +26,8 @@ const groups = [
     name: 'App Development',
     icon: Smartphone,
     description: 'Mobile app development for iOS and Android platforms.',
-    color: 'https://chat.whatsapp.com/JMybqNOlcmZF6NurIHxZFE',
+    color: 'text-green-500',
+    link: 'https://chat.whatsapp.com/JMybqNOlcmZF6NurIHxZFE',
   },
   {
     name: 'UI/UX Design',
@@ -59,7 +60,7 @@ const groups = [
   {
     name: 'Game Development',
     icon: Gamepad2,
-    description: 'Cloud infrastructure and DevOps practices.',
+    description: 'Game development and interactive experiences.',
     color: 'text-cyan-500',
     link: 'https://chat.whatsapp.com/HySw5AJ4ogaJaYmnIxD1Ak',
   },
@@ -74,46 +75,82 @@ const groups = [
 
 export default function GroupsSection() {
   return (
-    <section id="groups" className="py-20 px-4">
+    <section id="groups" className="py-20 px-4 bg-muted/50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Specialized Groups</h2>
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text 
+            bg-gradient-to-r from-orange-400 to-purple-600 drop-shadow-md">
+            Specialized Groups
+          </h2>
+
+          {/* <h2 className="text-3xl md:text-4xl font-bold mb-4">Specialized Groups</h2> */}
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join our specialized tech groups to connect with experts, share knowledge,
-            and collaborate on projects in your field of interest.
+            Join our tech groups to connect, learn, and grow with like-minded experts.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile Layout */}
+        <div className="md:hidden overflow-x-auto space-x-4 flex snap-x snap-mandatory px-1 pb-4">
+          {groups.map((group) => (
+            <motion.div
+              key={group.name}
+              whileTap={{ scale: 0.95 }}
+              className="snap-start min-w-[260px] max-w-[260px] shrink-0 bg-background rounded-xl shadow-md p-4 relative group transition duration-300 ease-out hover:scale-[1.03]"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <group.icon className={`h-10 w-10 mb-3 mx-auto ${group.color}`} />
+              <h3 className="text-lg font-semibold mb-1 text-center">{group.name}</h3>
+              <p className="text-sm text-muted-foreground mb-3 text-center">{group.description}</p>
+              <div className="text-center">
+                <a
+                  href={group.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm inline-flex gap-1 items-center text-indigo-600 hover:text-indigo-800"
+                >
+                  <Link className="w-4 h-4" /> Join Group
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {groups.map((group) => (
             <motion.div
               key={group.name}
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="relative group text-center p-6 rounded-xl border border-border bg-background shadow hover:shadow-xl transition-transform duration-200 ease-in-out overflow-hidden"
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="p-6 rounded-xl shadow bg-background text-center group relative overflow-hidden transition duration-300 ease-out hover:scale-[1.03]"
             >
-              <span className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-indigo-500 group-hover:animate-borderFlow z-0"></span>
-              <Card className="relative z-10 bg-background">
-                <CardContent className="p-6 text-center">
-                  <group.icon className={`h-12 w-12 mb-4 ${group.color}`} />
-                  <h3 className="text-xl font-semibold mb-2">{group.name}</h3>
-                  <p className="text-muted-foreground mb-4">{group.description}</p>
-                  <a
-                    href={group.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 transition-colors"
-                  >
-                    <Link className="w-4 h-4" /> Join Group
-                  </a>
-                </CardContent>
-              </Card>
+              {/* Blue border effect */}
+              <div className="absolute inset-0 border-2 border-transparent rounded-xl pointer-events-none group-hover:border-blue-500 transition duration-300 ease-out"></div>
+
+              <group.icon className={`h-12 w-12 mb-4 mx-auto ${group.color}`} />
+              <h3 className="text-xl font-semibold mb-2">{group.name}</h3>
+              <p className="text-muted-foreground mb-3">{group.description}</p>
+              <a
+                href={group.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800"
+              >
+                <Link className="w-4 h-4" /> Join Group
+              </a>
             </motion.div>
           ))}
         </div>

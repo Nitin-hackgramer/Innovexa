@@ -59,8 +59,10 @@ export default function ActivityFeedSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Community Activity</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text 
+            bg-gradient-to-r from-orange-400 to-purple-600 drop-shadow-md">
+            Community Activities
+          </h2>          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Stay updated with the latest happenings in our community. From challenges
             to opportunities, there's always something exciting going on!
           </p>

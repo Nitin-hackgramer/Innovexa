@@ -10,10 +10,10 @@ import { BookOpen, Code, Lightbulb, Video } from 'lucide-react';
 
 const resources = [
   {
-    title: 'Modern React Development',
+    title: 'Basic Web Development',
     type: 'Course',
     level: 'Beginner',
-    description: 'Learn React from scratch with practical examples.',
+    description: 'Learn HTML CSS & JavaScript from scratch with practical examples.',
     icon: Code,
     link: '#',
   },
@@ -60,7 +60,10 @@ export default function ResourcesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Learning Resources</h2>
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text 
+            bg-gradient-to-r from-orange-400 to-purple-600 drop-shadow-md">
+            Learning Resources
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore our curated collection of learning materials, tutorials, and guides
             to enhance your technical skills.

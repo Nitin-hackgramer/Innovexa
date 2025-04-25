@@ -42,8 +42,10 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text 
+            bg-gradient-to-r from-orange-400 to-purple-600 drop-shadow-md">
+            Get in Touch
+          </h2>          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join our community or reach out to us with any questions. We're here
             to help you connect and grow in the tech industry.
           </p>
