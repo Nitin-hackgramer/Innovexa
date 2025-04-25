@@ -12,7 +12,7 @@
 
 ## 🚀 Live Demo
 
-🎯 [Visit Live Site](https://innovexa-jb71f2oo9-nitin-sharmas-projects-573f4ee5.vercel.app/)  
+🎯 [Visit Live Site](https://innovexa.vercel.app/)  
 💡 Responsive, fast, and fully optimized for both desktop and mobile.
 
 ---
