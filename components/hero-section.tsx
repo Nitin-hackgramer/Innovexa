@@ -43,8 +43,8 @@ const StarBackground = () => {
 
   useEffect(() => {
     // Generate stars on client-side to avoid hydration mismatch
-    setStars(generateStars(350));
-    setFixedStars(generateFixedStars(80));
+    setStars(generateStars(200));
+    setFixedStars(generateFixedStars(180));
     setShootingStars(generateShootingStars(8));
   }, []);
 
