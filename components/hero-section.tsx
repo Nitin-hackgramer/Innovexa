@@ -43,8 +43,8 @@ const StarBackground = () => {
 
   useEffect(() => {
     // Generate stars on client-side to avoid hydration mismatch
-    setStars(generateStars(150));
-    setFixedStars(generateFixedStars(50));
+    setStars(generateStars(350));
+    setFixedStars(generateFixedStars(80));
     setShootingStars(generateShootingStars(8));
   }, []);
 
@@ -101,7 +101,7 @@ const StarBackground = () => {
       transition={{ 
         repeat: Infinity, 
         ease: 'linear', 
-        duration: 240 
+        duration: 180
       }}
       >
       <div className="relative w-full h-full">
@@ -118,7 +118,7 @@ const StarBackground = () => {
           opacity: star.opacity,
           }}
           animate={{
-          opacity: [star.opacity, star.opacity + 0.3, star.opacity],
+          opacity: [star.opacity, star.opacity + 0.5, star.opacity],
           }}
           transition={{
           duration: star.duration,
@@ -192,19 +192,6 @@ export default function HeroSection() {
   const [scrollOpacity, setScrollOpacity] = useState(1);
   const [, setScrollY] = useState(0);
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      const newOpacity = 1 - Math.min(currentScrollY / 500, 0.6);
-      setScrollOpacity(newOpacity);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section 
       ref={sectionRef}
