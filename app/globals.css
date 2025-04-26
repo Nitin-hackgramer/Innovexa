@@ -2,17 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 12, 8, 22;
-  --background-end-rgb: 20, 12, 35;
-}
 
 @layer base {
   :root {
-    /* Refined color palette for luxury feel */
-    --background: 262 45% 6%; /* Deeper, richer background */
-    --foreground: 0 0% 98%; /* Slightly softer white for eye comfort */
+    /* Luxury color palette */
+    --background: 262 45% 6%;
+    --foreground: 0 0% 98%;
 
     --card: 260 45% 10%;
     --card-foreground: 0 0% 98%;
@@ -20,15 +15,13 @@
     --popover: 258 45% 12%;
     --popover-foreground: 0 0% 98%;
 
-    /* Refined primary color - slightly more saturated purple */
-    --primary: 288 85% 65%; 
+    --primary: 288 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    /* Enhanced accent colors */
-    --secondary: 315 75% 58%; /* Warmer pink */
+    --secondary: 315 75% 58%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 25 100% 62%; /* Rich orange */
+    --accent: 25 100% 62%;
     --accent-foreground: 0 0% 100%;
 
     --muted: 260 30% 22%;
@@ -37,32 +30,34 @@
     --destructive: 0 85% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Refined borders and inputs for luxury feel */
     --border: 260 30% 26%;
     --input: 260 25% 22%;
-    --ring: 288 85% 65%; /* Match primary */
+    --ring: 288 85% 65%;
 
-    /* Enhanced chart colors */
-    --chart-1: 315 85% 60%; /* Rich pink */
-    --chart-2: 25 100% 62%; /* Vibrant orange */
-    --chart-3: 252 80% 65%; /* Deep indigo */
-    --chart-4: 272 65% 55%; /* Rich violet */
-    --chart-5: 332 75% 65%; /* Deep rose */
+    --chart-1: 315 85% 60%;
+    --chart-2: 25 100% 62%;
+    --chart-3: 252 80% 65%;
+    --chart-4: 272 65% 55%;
+    --chart-5: 332 75% 65%;
 
     --radius: 0.5rem;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(262, 45%, 6%) 0%, hsl(280, 50%, 10%) 50%, hsl(262, 45%, 8%) 100%);
-    background-attachment: fixed;
-  }
+  
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    
+    /* Apply the luxury background gradient globally */
+    body {
+      @apply bg-background text-foreground;
+      background: linear-gradient(135deg, hsl(262, 45%, 8%) 0%, #1C1C44 40%, hsl(322, 50%, 20%) 80%);
+      background: linear-gradient(135deg, hsl(262, 45%, 8%) 0%, #1C1C44 40%, hsl(252, 45%, 18%) 70%, hsl(288, 50%, 25%) 100%);
+      background-attachment: local, fixed;
+      background-blend-mode: overlay;
+      background-attachment: fixed;
+    }
   
   /* Luxury styling for headings */
   h1, h2, h3, h4, h5, h6 {
@@ -175,4 +170,4 @@
 
 .glow-effect:hover {
   box-shadow: 0 0 25px rgba(233, 79, 173, 0.5);
-}
+}}
