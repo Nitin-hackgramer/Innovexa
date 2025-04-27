@@ -15,30 +15,48 @@ export default function ContactSection() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  
-    try {
-      const res = await fetch('https://innovexa.vercel.app/api/contact/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-  
-      const data = await res.json();
-      if (data.success) {
-        alert('Message sent successfully!');
-        setForm({ name: '', email: '', message: '' }); // Reset form
-      } else {
-        alert(data.message || 'Failed to send message.');
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  if (!form.name || !form.email || !form.message) {
+    alert('Please fill out all fields.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    });
+
+    let data;
+    if (!res.ok) {
+      console.error(`Error: ${res.status} ${res.statusText}`);
+      data = { success: false, message: `Failed to send message. Server responded with status: ${res.status}` };
+    } else {
+      try {
+        data = await res.json(); // Attempt to parse JSON response
+      } catch (jsonError) {
+        console.error('Invalid JSON response:', jsonError);
+        data = { success: false, message: 'Invalid response from server.' };
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Something went wrong. Please try again.');
     }
-  };
+
+    if (data.success) {
+      alert(data.message || 'Message sent successfully!');
+      setForm({ name: '', email: '', message: '' }); // Reset form
+    } else {
+      alert(data.message || 'Failed to send message.');
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    alert('Something went wrong. Please try again.');
+  }
+};
+
   
 
   const buttonVariants = {
