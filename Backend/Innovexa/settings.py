@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-secret-key-for-testing'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'innovexa.vercel.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
