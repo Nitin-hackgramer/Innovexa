@@ -19,7 +19,7 @@ export default function ContactSection() {
     e.preventDefault();
   
     try {
-      const res = await fetch('http://innovexa.vercel.app/api/contact/', {
+      const res = await fetch('https://innovexa.vercel.app/api/contact/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
