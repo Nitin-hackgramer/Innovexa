@@ -11,21 +11,35 @@ import { useState } from 'react';
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const whatsappMessage = `Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
-    const encodedMsg = encodeURIComponent(whatsappMessage);
-
-    window.open(`https://wa.me/919968358455?text=${encodedMsg}`, '_blank');
-    setTimeout(() => window.open(`https://wa.me/917817060887?text=${encodedMsg}`, '_blank'), 1000);
-
-    const mailtoLink = `mailto:nitinkumar12082005@gmail.com?subject=Community Inquiry from ${form.name}&body=${encodedMsg}`;
-    window.open(mailtoLink, '_blank');
+  
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/contact/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+  
+      const data = await res.json();
+      if (data.success) {
+        alert('Message sent successfully!');
+        setForm({ name: '', email: '', message: '' }); // Reset form
+      } else {
+        alert(data.message || 'Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again.');
+    }
   };
+  
 
   const buttonVariants = {
     hover: { scale: 1.05 },
@@ -34,6 +48,9 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 px-4 bg-muted/50">
+      <div className="absolute top-0 left-0 w-full h-1">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
+      </div>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +62,8 @@ export default function ContactSection() {
           <h2 className="text-4xl font-bold text-transparent bg-clip-text 
             bg-gradient-to-r from-orange-400 to-purple-600 drop-shadow-md">
             Get in Touch
-          </h2>          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join our community or reach out to us with any questions. We're here
             to help you connect and grow in the tech industry.
           </p>
@@ -83,15 +101,15 @@ export default function ContactSection() {
                       whileHover="hover"
                       whileTap="tap"
                     >
-                        <a
+                      <a
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center w-full h-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white text-lg py-2 px-4 rounded-md shadow-md hover:shadow-lg transition-all"
-                        >
+                      >
                         <MessageSquare className="mr-2 h-5 w-5" />
                         {text}
-                        </a>
+                      </a>
                     </motion.div>
                   ))}
                 </div>
