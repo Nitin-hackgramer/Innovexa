@@ -68,9 +68,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 px-4 bg-gradient-to-b from-muted/50 to-muted/30 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
       <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-orange-400/10 blur-3xl"></div>
       <div className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full bg-purple-600/10 blur-3xl"></div>
       
