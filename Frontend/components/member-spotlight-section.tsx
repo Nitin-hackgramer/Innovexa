@@ -138,7 +138,10 @@ export default function MemberSpotlightSection() {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-muted/50 to-muted/30 overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-muted/50 to-muted/30 overflow-hidden">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[93%] h-1">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
