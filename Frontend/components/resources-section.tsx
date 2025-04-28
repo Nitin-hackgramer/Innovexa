@@ -51,8 +51,7 @@ export default function ResourcesSection() {
     : resources.filter(resource => resource.level.toLowerCase() === selectedLevel);
 
   return (
-    <section id="resources" className="py-20 px-4">
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
+    <section id="resources" className="py-20 px-4"> 
       {/* Removed unnecessary empty div */}
       <div className="max-w-7xl mx-auto">
         <motion.div
