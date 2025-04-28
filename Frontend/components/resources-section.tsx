@@ -52,9 +52,7 @@ export default function ResourcesSection() {
 
   return (
     <section id="resources" className="py-20 px-4">
-      <div className="relative w-full h-1 mb-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-purple-500 to-blue-600"></div>
       {/* Removed unnecessary empty div */}
       <div className="max-w-7xl mx-auto">
         <motion.div
