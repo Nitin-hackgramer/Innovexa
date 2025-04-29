@@ -6,6 +6,6 @@ urlpatterns = [def root_view(request):
     return JsonResponse({"message": "Welcome to the API!"})
 
 urlpatterns = [
-    path('', contact_view, name='contact'),  # Add a route for /
+    path('', root_view, name='root'),  # Add a route for /
     path('', contact_view, name='contact'),
 ]
