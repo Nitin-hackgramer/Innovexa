@@ -112,7 +112,7 @@ export default function Footer() {
           className="border-t border-border mt-12 pt-8 text-center"
         >
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} TechNexus. All rights reserved.
+            © {new Date().getFullYear()} Innovexa. All rights reserved.
           </p>
         </motion.div>
       </div>
