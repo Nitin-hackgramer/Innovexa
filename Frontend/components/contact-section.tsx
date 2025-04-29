@@ -15,47 +15,55 @@ export default function ContactSection() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-
-  if (!form.name || !form.email || !form.message) {
-    alert('Please fill out all fields.');
-    return;
-  }
-
-  try {
-    const res = await fetch(`$https://innovexa.vercel.app/api/contact/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    });
-
-    let data;
-    if (!res.ok) {
-      console.error(`Error: ${res.status} ${res.statusText}`);
-      data = { success: false, message: `Failed to send message. Server responded with status: ${res.status}` };
-    } else {
-      try {
-        data = await res.json(); // Attempt to parse JSON response
-      } catch (jsonError) {
-        console.error('Invalid JSON response:', jsonError);
-        data = { success: false, message: 'Invalid response from server.' };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    // Validate form fields
+    if (!form.name || !form.email || !form.message) {
+      alert('Please fill out all fields.');
+      return;
+    }
+  
+    try {
+      // Ensure the correct API endpoint
+      const res = await fetch('http://innovexabackend.vercel.app/api/contact/', { // Fixed the URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form), // Properly stringifying the form data
+      });
+  
+      // Check for HTTP errors
+      if (!res.ok) {
+        console.error('Error:', { status: res.status, statusText: res.statusText });
+        let errorMessage = `Failed to send message. Server responded with status: ${res.status}`;
+        try {
+          if (res.headers.get('content-type')?.includes('application/json')) {
+            const errorData = await res.json(); // Parse JSON only if content type is JSON
+            errorMessage = errorData.message || errorMessage;
+          }
+        } catch (parseError) {
+          console.error('Error parsing response:', parseError);
+        }
+        alert(errorMessage);
+        return;
       }
+  
+      // Parse the JSON response for success
+      const data = await res.json(); // Proper parsing
+      if (data.success) {
+        alert(data.message || 'Message sent successfully!');
+        setForm({ name: '', email: '', message: '' }); // Reset the form
+      } else {
+        alert(data.message || 'Failed to send message.');
+      }
+    } catch (error) {
+      // Handle unexpected network errors
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again later.');
     }
-
-    if (data.success) {
-      alert(data.message || 'Message sent successfully!');
-      setForm({ name: '', email: '', message: '' }); // Reset form
-    } else {
-      alert(data.message || 'Failed to send message.');
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    alert('Something went wrong. Please try again.');
-  }
-};
+  };
 
   
 
