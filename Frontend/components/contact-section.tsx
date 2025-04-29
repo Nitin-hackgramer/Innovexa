@@ -26,7 +26,7 @@ export default function ContactSection() {
   
     try {
       // Ensure the correct API endpoint
-      const res = await fetch('http://innovexabackend.vercel.app/api/contact/', { // Fixed the URL
+      const res = await fetch('https://innovexabackend.vercel.app/api/contact/', { // Fixed the URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
