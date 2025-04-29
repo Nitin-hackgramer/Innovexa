@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -8,7 +7,7 @@ SECRET_KEY = 'django-insecure-secret-key-for-testing'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'innovexa.vercel.app/']
+ALLOWED_HOSTS = ['innovexa.vercel.app', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,7 +34,7 @@ MIDDLEWARE = [
 MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 CORS_ALLOWED_ORIGINS = [
-    "https://innovexa.vercel.app/",
+    "https://innovexa.vercel.app",
     "http://localhost:3000",
 ]
 
@@ -89,3 +88,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'nitinkumar12082005@gmail.com'
 EMAIL_HOST_PASSWORD = 'ccjp grnt hecc uysr'  # Replace securely
+
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG", "False") == "True"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
