@@ -7,5 +7,5 @@ urlpatterns = [def root_view(request):
 
 urlpatterns = [
     path('', root_view, name='root'),  # Add a route for /
-    path('', contact_view, name='contact'),
+    path('contact/', contact_view, name='contact'),
 ]
