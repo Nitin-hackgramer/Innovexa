@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-secret-key-for-testing'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['innovexa.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['innovexa.vercel.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,7 +35,6 @@ MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 CORS_ALLOWED_ORIGINS = [
     "https://innovexa.vercel.app",
-    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'Innovexa.urls'
