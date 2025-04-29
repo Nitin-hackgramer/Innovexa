@@ -22,4 +22,4 @@ urlpatterns = [
     path('api/contact/', include('contact.urls')),
     path('', include('contact.urls')),
 ]
-
+urlpatterns += staticfiles_urlpatterns()
