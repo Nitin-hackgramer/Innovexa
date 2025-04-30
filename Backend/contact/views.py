@@ -9,8 +9,7 @@ import requests
 ADMIN_EMAIL = 'nitinkumar12082005@gmail.com'
 WHATSAPP_PHONE = '+919968358455'
 WHATSAPP_API_KEY = 'your_callmebot_api_key'  # Replace with your real key from CallMeBot
-
-@api_view(['POST'])
+ 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.mail import send_mail
