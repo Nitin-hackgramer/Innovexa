@@ -25,6 +25,6 @@ def root_view(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', root_view),  # This will respond to `/`
-    path('api/contact', include('contact.urls')),
+    path('api/', include('contact.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
