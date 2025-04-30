@@ -8,3 +8,4 @@ django-cors-headers>=3.13.0
 django-environ>=0.10.0
 requests>=2.28.0
 django-environ
+rest_framework
