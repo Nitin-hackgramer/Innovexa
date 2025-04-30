@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.http import JsonResponse
+
+def root_view(request):
+    return JsonResponse({"status": "API is running", "message": "Welcome to Innovexa backend!"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
