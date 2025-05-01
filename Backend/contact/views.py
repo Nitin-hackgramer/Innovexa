@@ -1,36 +1,30 @@
-# contact/views.py
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 import requests
-
-# Your email and WhatsApp details
-ADMIN_EMAIL = 'nitinkumar12082005@gmail.com'
-WHATSAPP_PHONE = '+919968358455'
-WHATSAPP_API_KEY = 'your_callmebot_api_key'  # Replace with your real key from CallMeBot
- 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.core.mail import send_mail
-from django.http import JsonResponse
-import requests
+import traceback
 
 ADMIN_EMAIL = 'nitinkumar12082005@gmail.com'
 WHATSAPP_PHONE = '+919968358455'
-WHATSAPP_API_KEY = 'your_callmebot_api_key'  # Replace with real API key
+WHATSAPP_API_KEY = ''  # Leave blank if not used
 
+@csrf_exempt
 @api_view(['POST'])
 def contact_view(request):
     try:
-        # Use DRF's built-in request parser
+        print("🔔 Contact form API hit")
         data = request.data
+        print("📦 Received data:", data)
+
         name = data.get('name')
         email = data.get('email')
         message = data.get('message')
 
         if not all([name, email, message]):
-            return Response({'error': 'All fields are required.'}, status=400)
+            return JsonResponse({'error': 'All fields are required.'}, status=400)
 
         subject = f'New Contact Form Submission from {name}'
         body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
@@ -38,22 +32,29 @@ def contact_view(request):
         send_mail(
             subject,
             body,
-            email,
+            settings.DEFAULT_FROM_EMAIL,
             [ADMIN_EMAIL],
             fail_silently=False,
         )
 
-        # Optional: Send WhatsApp message
-        try:
-            whatsapp_msg = f"New message from {name} ({email}): {message}"
-            send_whatsapp_message(whatsapp_msg)
-        except Exception as e:
-            print("WhatsApp error:", e)
+        print("✅ Email sent")
 
-        return Response({'success': True, 'message': 'Message sent successfully!'})
+        # WhatsApp message (optional)
+        if WHATSAPP_API_KEY:
+            try:
+                whatsapp_message = f"New message from {name} ({email}): {message}"
+                send_whatsapp_message(whatsapp_message)
+                print("📨 WhatsApp sent")
+            except Exception as e:
+                print("❌ WhatsApp error:", e)
+
+        return JsonResponse({'success': True, 'message': 'Message sent successfully!'})
 
     except Exception as e:
-        return Response({'error': f'An error occurred: {str(e)}'}, status=500)
+        print("🔥 Server error:", e)
+        print(traceback.format_exc())  # Show full traceback in logs
+        return JsonResponse({'error': 'Internal Server Error'}, status=500)
+
 
 def send_whatsapp_message(message):
     url = f"https://api.callmebot.com/whatsapp.php?phone={WHATSAPP_PHONE}&text={message}&apikey={WHATSAPP_API_KEY}"
