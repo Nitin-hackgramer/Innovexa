@@ -95,6 +95,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'nitinkumar12082005@gmail.com'
 EMAIL_HOST_PASSWORD = 'ccjp grnt hecc uysr'  # Replace securely
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")
