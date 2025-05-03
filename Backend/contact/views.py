@@ -1,3 +1,9 @@
+import logging
+from django.conf import settings
+logger = logging.getLogger(__name__)
+
+
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.mail import send_mail
@@ -29,6 +35,12 @@ def contact_view(request):
         subject = f'New Contact Form Submission from {name}'
         body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
+        # Before send_mail
+        logger.info("EMAIL_HOST: %s", settings.EMAIL_HOST)
+        logger.info("EMAIL_PORT: %s", settings.EMAIL_PORT)
+        logger.info("EMAIL_HOST_USER: %s", settings.EMAIL_HOST_USER)
+        logger.info("EMAIL_USE_TLS: %s", settings.EMAIL_USE_TLS)
+        
         send_mail(
             subject,
             body,
