@@ -1,15 +1,27 @@
-import environ 
 import os
 from pathlib import Path
+import environ
 
+# Initialize env
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+# Read .env (local dev), on Railway it'll read from the environment
+environ.Env.read_env(os.path.join(Path(__file__).resolve().parent.parent, '.env'))
+
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-secret-key-for-testing'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[".railway.app", "localhost", "127.0.0.1"])
 
+# Installed apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,9 +34,9 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -34,15 +46,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+# CORS
+CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=["https://innovexa.vercel.app"])
+CORS_ALLOW_ALL_ORIGINS = env.bool("CORS_ALLOW_ALL_ORIGINS", default=False)
 
-CORS_ALLOWED_ORIGINS = [
-    "https://innovexa.vercel.app",
-]
-
+# URL and WSGI
 ROOT_URLCONF = 'Innovexa.urls'
-STATIC_URL = '/static/'
+WSGI_APPLICATION = 'Innovexa.wsgi.application'
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -59,8 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Innovexa.wsgi.application'
-
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -68,49 +79,29 @@ DATABASES = {
     }
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+# Static files
+STATIC_URL = '/static/'
 
+# Password validators (empty for now)
 AUTH_PASSWORD_VALIDATORS = []
 
+# Timezone
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-STATIC_URL = 'static/'
-
+# Auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# HTTPS proxy (important on Railway)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Use Render's PORT environment variable if available, otherwise default to 8000
-PORT = int(os.getenv('PORT', 8000)) 
-
-# Email Settings
+# Email settings (using env)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'nitinkumar12082005@gmail.com'
-EMAIL_HOST_PASSWORD = 'ccjp grnt hecc uysr'  # Replace securely
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env.int("EMAIL_PORT", default=587)
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
- 
-# Initialize environ
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-# General
-SECRET_KEY = env("SECRET_KEY")
-DEBUG = env.bool("DEBUG", default=False)
- 
-# Email
-# EMAIL_BACKEND = env("EMAIL_BACKEND")
-# EMAIL_HOST = env("EMAIL_HOST")
-# EMAIL_PORT=587  # Must be integer
-# EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-# EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-# EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
