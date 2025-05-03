@@ -26,7 +26,7 @@ export default function ContactSection() {
   
     try {
       // Ensure the correct API endpoint
-      const res = await fetch('https://innovexa-cc86.onrender.com/api/contact/', { // Fixed the URL
+      const res = await fetch('https://innovexa-production-40e6.up.railway.app/api/contact/', { // Fixed the URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
