@@ -1,4 +1,4 @@
-# TechNexus - Tech Community Website
+# Innovexa - Tech Community Website
 
 A responsive, modern one-page website for a tech freelance community.
 
