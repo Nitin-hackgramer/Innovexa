@@ -98,10 +98,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Email settings (using env)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env.int("EMAIL_PORT", default=587)
-EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = env("EMAIL_HOST")
+# EMAIL_PORT = env.int("EMAIL_PORT", default=587)
+# EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+# EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", "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")
