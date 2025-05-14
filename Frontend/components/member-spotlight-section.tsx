@@ -8,15 +8,7 @@ import { LucideLinkedin } from 'lucide-react';
 import { FaTwitter, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const members = [
-  {
-    name: 'Neha Jangid',
-    role: 'Frontend Developer',
-    image: '/neha.jpg',
-    achievement: 'Led the redesign of a major e-commerce platform',
-    skills: ['React', 'TypeScript', 'Tailwind CSS'],
-    linkedin: 'https://www.linkedin.com/in/neha-jangid-79a9b0327/',
-    twitter: 'https://twitter.com/nehajangid',
-  },
+
   {
     name: 'Ranjan Kushwaha',
     role: 'UX Designer',
