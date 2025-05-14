@@ -14,7 +14,7 @@ const activities = [
   {
     type: 'Dev of the Week',
     icon: Trophy,
-    title: 'Neha Jangid wins Dev of the Week!',
+    title: 'Harshita wins Dev of the Week!',
     description: 'Recognized for outstanding contributions to the React Native project.',
     date: '2 days ago',
     badge: 'Achievement',
