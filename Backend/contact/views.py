@@ -123,7 +123,7 @@ def contact_view(request):
 
         # SendGrid Email Sending (No SMTP)
         try:
-            sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
+            sg = sendgrid.SendGridAPIClient(api_key="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")
             mail = Mail(
                 from_email=email,
                 to_emails=ADMIN_EMAIL,
