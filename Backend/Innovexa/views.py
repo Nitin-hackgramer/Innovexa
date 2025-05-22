@@ -37,9 +37,10 @@ def contact_view(request):
             body,
             email,
             [ADMIN_EMAIL],
+            ['ss2760819@gmail.com'], 
             fail_silently=False,
-        )
-
+        ) 
+        
         # Send WhatsApp
         try:
             whatsapp_message = f"New message from {name} ({email}): {message}"
