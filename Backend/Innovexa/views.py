@@ -37,7 +37,6 @@ def contact_view(request):
             body,
             email,
             [ADMIN_EMAIL],
-            ['ss2760819@gmail.com'], 
             fail_silently=False,
         ) 
         
