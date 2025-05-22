@@ -1,8 +1,0 @@
-from django.http import HttpResponse
-
-def favicon_view(request):
-    return HttpResponse('', content_type='image/x-icon')
-
-urlpatterns += [
-    path('favicon.ico', favicon_view),  # Serve an empty or custom favicon
-]
