@@ -26,12 +26,12 @@ export default function ContactSection() {
   
     try {
       // Ensure the correct API endpoint
-      const res = await fetch('https://innovexa-production-40e6.up.railway.app/api/contact/', { // Fixed the URL
+      const res = await fetch('https://innovexa.vercel.app/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form), // Properly stringifying the form data
+        body: JSON.stringify(form),
       });
   
       // Check for HTTP errors
@@ -64,7 +64,8 @@ export default function ContactSection() {
       alert('Something went wrong. Please try again later.');
     }
   };
-
+  
+  
   
 
   const buttonVariants = {
