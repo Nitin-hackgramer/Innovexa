@@ -6,7 +6,7 @@ import requests
 from django.shortcuts import render
 
 # Your email and WhatsApp details
-ADMIN_EMAIL = 'nitinkumar12082005@gmail.com'
+ADMIN_EMAIL = 'innovexa.team@gmail.com'
 WHATSAPP_PHONE = '+919968358455'
 WHATSAPP_API_KEY = 'your_callmebot_api_key'  # Replace with your real key from CallMeBot
 
