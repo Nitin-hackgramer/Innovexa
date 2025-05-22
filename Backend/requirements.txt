@@ -5,4 +5,4 @@ vercel>=0.0.1
 django-cors-headers>=3.13.0
 django-environ>=0.10.0
 django-decouple>=3.8  # Added for decoupling settings
-requests>=2.28.0 
+requests>=2.1 
