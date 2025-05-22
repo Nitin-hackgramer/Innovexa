@@ -12,10 +12,9 @@ WHATSAPP_API_KEY = 'your_callmebot_api_key'  # Replace with your real key from C
 
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def contact_view(request):
-    if request.method == 'GET':
-        # Render the contact form template on GET request
+    if request.method == 'GET': 
         return render(request, 'contact.html')
 
     try:
